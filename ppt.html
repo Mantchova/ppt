@@ -1,0 +1,78 @@
+
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Pedra Papel Tesoura</title>
+
+<script>
+    alert("Regras:\n Papel Ganha da Pedra\n Pedra ganha de Tesoura\n Tesoura ganha de Papel\n")
+	alert("Para escolher, clique em uma imagem \n")
+	alert("Click no Ok para inicar o jogo") 
+	var Player = 0 
+	var PC = 0
+	var contador = 0     
+	        function jo(a, z){
+		      var n = Math.random() * (z - a) + a 
+		        if(n > 2){
+			        contador = 0
+			        alert("Que pena! Pedra perde para Papel")
+		    }   else if(n > 1){
+			        contador = 2
+			        alert("Draw! Pedra e Pedra da empate")
+		    }   else{
+			        contador = 1
+			        alert("Parabens! Pedra ganha de Tesoura")
+		        }
+	    }
+	        function ken(a, z){
+		      var n = Math.random() * (z - a) + a 
+		        if(n > 2){
+			        contador = 2
+			        alert("Draw! Papel e Papel da empate")
+		    }   else if(n > 1){
+			        contador = 1
+			        alert("Parabens! Papel ganha de Pedra")
+		    }   else{
+			        contador = 0
+			        alert("Que pena! Papel perde para Tesoura")
+		        }
+	    }
+	        function po(a, z){
+		      var n = Math.random() * (z - a) + a 
+		        if(n > 2){
+			        contador = 1
+			        alert("Parabens! Tesoura ganha de Papel")
+		}       else if(n > 1){
+			        contador = 0
+			        alert("Que pena! Tesoura perde para Pedra")
+		}       else{
+			        contador = 2
+			        alert("Draw!Tesoura com Tesoura da empate  (Aquela carinha) ")
+		    }
+	    }
+	        function ponto(){
+                if(contador == 1){
+                    Player++;
+                    document.getElementById("pontoPlayer").innerHTML = pPlayer;
+            }   else if(contador == 0){
+                    PC++;
+                    document.getElementById("pontoPC").innerHTML = pPC;
+            }
+        }
+	   
+ </script>
+
+
+</head>
+<body  bgcolor="#94b8b8">
+<h1 style="color: #1e2f2f;text-align: center;background-color: #507c7c;border-bottom: 10px solid black;"><i>Jo-Ken-Po</i></h1>
+<div style="margin-left: 31%; text-align: center;height: 200px;width: 700px;">
+    <img src="magnetita-pedra-de-cevar-4-1-cm-7f8.jpg" onclick="jo(0,3);ponto();" style="height: 100%;width: 200px;">
+    <img src="Paper_sheet.jpg" onclick="ken(0,3);ponto();" style="height: 100%;width: 200px;">
+    <img src="tesoura.jpg" onclick="po(0,3);ponto();" style="height: 100%;width: 200px;">
+</div>
+<div style="text-align: center; margin-top: 60px">
+	<b><p>Player <font id="pontoPlayer">0</font> x <font id="pontoPC">0</font> Maquina</p></b>
+</div>
+</body>
+</html>
