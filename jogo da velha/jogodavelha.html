@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Jogo da Velha</title>
+	</head>
+
+	<style type="text/css">
+		table{
+			border: 1px solid black;
+			width: 500px;
+			height: 500px;
+		}
+		td{
+			border: 1px solid black;
+			width: 163px;
+			height: 163px;
+			padding: 0;
+			text-align: center;
+		}
+		div{
+
+		}
+	</style>
+
+	<script type="text/javascript">
+		var player = 1;
+		var contador;
+		function jogada(posicao) {
+			var casa = document.getElementById('casa'+posicao);
+			if(player == 1){
+				casa.innerHTML = 'x';
+				player = 2;
+			}else{	
+				casa.innerHTML = 'o';
+				player = 1;
+			}
+			verificar(player);
+			document.getElementById('vez').innerHTML = 'Vez do jogador ' + player;
+		}
+		function reset(){
+			var i;
+			for(i = 1; i <= 9; i++){
+				var casa = document.getElementById('casa'+i);
+				casa.innerHTML = '';
+			}
+		}
+
+		function verificar(player){
+			h11 = document.getElementById('casa1').innerHTML;
+			h12 = document.getElementById('casa2').innerHTML;
+			h13 = document.getElementById('casa3').innerHTML;
+			h21 = document.getElementById('casa4').innerHTML;
+			h22 = document.getElementById('casa5').innerHTML;
+			h23 = document.getElementById('casa6').innerHTML;
+			h31 = document.getElementById('casa7').innerHTML;
+			h32 = document.getElementById('casa8').innerHTML;
+			h33 = document.getElementById('casa9').innerHTML;
+			if (((h11 != '') && (h12 != '') && (h13 != '') && (h11 == h12) && (h12 == h13)) || ((h11 != '') && (h22 != '') && (h33 != '') && (h11 == h22) && (h22 == h33)) || ((h11 != '') && (h21 != '') && (h31 != '') && (h11 == h21) && (h21 ==h31)) || ((h21 != '') && (h22 != '') && (h23 != '') && (h21 == h22) && (h22 == h23)) || ((h31 != '') && (h32 != '') && (h33 != '') && (h31 == h32) && (h32 == h33)) || ((h12 != '') && (h22 != '') && (h32 != '') && (h12 == h22) && (h22 == h32)) || ((h13 != '') && (h23 != '') && (h33 != '') && (h13 == h23) && (h23 == h33)) || ((h31 != '') && (h22 != '') && (h13 != '') && (h31 == h22) && (h22 == h13))){
+				alert('Player '+player+' ganhou!');
+				reset();
+			}
+		}
+	</script>
+	<body align="center">
+		<h1>Jogo da Velha</h1>
+		<p id="vez">Vez do jogador 1</p>
+		<table align="center">
+			<tr>
+				<td onclick="jogada(1)" id="casa1"></td>
+				<td onclick="jogada(2)" id="casa2"></td>
+				<td onclick="jogada(3)" id="casa3"></td>
+			</tr>
+			<tr>
+				<td onclick="jogada(4)" id="casa4"></td>
+				<td onclick="jogada(5)" id="casa5"></td>
+				<td onclick="jogada(6)" id="casa6"></td>
+			</tr>
+			<tr>
+				<td onclick="jogada(7)" id="casa7"></td>
+				<td onclick="jogada(8)" id="casa8"></td>
+				<td onclick="jogada(9)" id="casa9"></td>
+			</tr>
+		</table>
+		<button onclick="reset();">Reset?</button>
+	</body>
+</html>
