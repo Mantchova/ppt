@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Juros Compostos</title>
+		<meta charset="utf-8">
+	</head>
+
+	<style type="text/css">
+		
+	</style>
+
+	<script type="text/javascript">
+		function calcula() {
+			var ci = document.getElementById('capitalInicial').value;
+			var tempo = document.getElementById('tempo').value;
+			var juros = document.getElementById('juros').value/100;
+			var montante = ci;
+			var str = "Montantes por período: \n";
+
+			for(var i = 1; i <= tempo; i++){
+				montante *= (1 + juros);
+				if(i == tempo)
+ 					str += "Montante Final: R$ " + montante.toFixed(2) + "\n";
+ 				else
+					str += i + 'º período: R$ ' + montante.toFixed(2) + "\n";
+			}
+			var abs = montante - ci;
+			var percent = abs/ci * 100;
+			str += 'Rendimento: R$' + abs.toFixed(2) + ' (' + percent.toFixed(2) + '%)'
+ 			alert(str);
+		}
+	</script>
+	<body align="center">
+		<h2>Juros Compostos</h2>
+
+		Digite o capital inicial: <input type="text" id="capitalInicial"><br>
+		Digite a taxa de juros: <input type="text" id="juros"><br>
+		Digite o tempo: <input type="text" id="tempo"><br>
+		<button onclick="calcula();">Calcular</button>
+	</body>
+</html>
